@@ -40,7 +40,7 @@
 
         <StackLayout Margin="0,35,0,0" Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="Eres Nuevo?" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#800020" FontSize="Small"></Label>
-            <Button Text="Registrate!" FontSize="Small" TextColor="#590016" BorderWidth="0" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"  BackgroundColor="Transparent"></Button>
+            <Button Command="{Binding GoToRegisterPageCommand}" Text="Registrate!" FontSize="Small" TextColor="#590016" BorderWidth="0" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"  BackgroundColor="Transparent"></Button>
         </StackLayout>
 
     </VerticalStackLayout>

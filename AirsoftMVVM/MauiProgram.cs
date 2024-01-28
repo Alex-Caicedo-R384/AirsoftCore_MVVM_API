@@ -22,8 +22,10 @@ namespace AirsoftMVVM
             builder.Services.AddSingleton<AboutPage>();
             builder.Services.AddSingleton<ContactPage>();
             builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<RegisterPage>();
+            builder.Services.AddSingleton<RegisterPageViewModel>();
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
