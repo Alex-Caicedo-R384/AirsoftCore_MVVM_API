@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AirsoftMVVM.ViewModels"
+             x:DataType="viewmodels:RegisterPageViewModel"
              x:Class="AirsoftMVVM.Views.RegisterPage"
-             Title="RegisterPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Regístrate"
+             BackgroundColor="#bebebe">
+
+    <VerticalStackLayout Margin="20">
+        <Frame CornerRadius="50" WidthRequest="100" HeightRequest="100" Padding="0" BorderColor="#800020" BackgroundColor="#5e5e5e">
+            <Image Source="usuariologo.jpg" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+        </Frame>
+
+        <StackLayout Orientation="Vertical" Spacing="10">
+            <Label Text="Bienvenidos" FontAttributes="Bold" FontSize="Large" TextColor="#b26679" HorizontalOptions="Center"></Label>
+            <Label Text="Regístrate para continuar" TextColor="#b26679" HorizontalOptions="Center"></Label>
+        </StackLayout>
+
+        <Grid RowDefinitions="*, *, *" Margin="0,20,0,0" Padding="10" RowSpacing="10" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" >
+                <Image Source="usuario.jpg" WidthRequest="30" HeightRequest="30"></Image>
+                <Entry Text="{Binding Email}" HeightRequest="50" WidthRequest="300" Margin="10,0,0,0" Placeholder="Correo" FontAttributes="Bold"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                <Image Source="candado.jpg" WidthRequest="30" HeightRequest="30"></Image>
+                <Entry Text="{Binding Password}" HeightRequest="50" WidthRequest="300" Margin="10,0,0,0" Placeholder="Contraseña" FontAttributes="Bold" IsPassword="True"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Margin="35,0,0,0" >
+                <CheckBox IsChecked="False"></CheckBox>
+                <Label Text="Recordarme" FontAttributes="Bold" Margin="-10,13,0,0"></Label>
+            </StackLayout>
+        </Grid>
+
+        <Button Command="{Binding RegisterCommand}" FontAttributes="Bold" Text="Registrarse" TextColor="#fff" BackgroundColor="#800020" CornerRadius="10" FontSize="20" VerticalOptions="Center"></Button>
+
+        <StackLayout Margin="0,20,0,0" Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="¿Ya tienes una cuenta?" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#800020" FontSize="Small"></Label>
+            <Button Command="{Binding GoToLoginPageCommand}" Text="¡Inicia sesión!" FontSize="Small" TextColor="#590016" BorderWidth="0" FontAttributes="Bold" BackgroundColor="Transparent"></Button>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

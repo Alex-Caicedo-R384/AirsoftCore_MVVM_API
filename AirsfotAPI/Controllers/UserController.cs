@@ -79,16 +79,24 @@ namespace AirsoftAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> RegisterUser(User user)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'AppDbContext.Users'  is null.");
-          }
+            if (await UserExists(user.Email))
+            {
+                return BadRequest("El correo electrónico ya está en uso");
+            }
+
+            // Aquí puedes agregar la lógica para encriptar la contraseña del usuario
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+        }
+
+        private async Task<bool> UserExists(string email)
+        {
+            return await _context.Users.AnyAsync(x => x.Email == email);
         }
 
         // DELETE: api/Users/5

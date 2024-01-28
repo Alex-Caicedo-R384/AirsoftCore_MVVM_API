@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace AirsoftMVVM.ViewModels;
 
-public partial class LoginPageViewModel : ObservableObject 
+public partial class RegisterPageViewModel : ObservableObject
 {
     [ObservableProperty]
     private string _email;
@@ -19,13 +19,19 @@ public partial class LoginPageViewModel : ObservableObject
     readonly ILoginRepository loginService = new LoginService();
 
     [RelayCommand]
-    public async void SignIn() 
+    public async void Register()
     {
-        try 
+        try
         {
             if (!string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password))
             {
-                User user = await loginService.Login(Email, Password);
+                if (await loginService.EmailExists(Email))
+                {
+                    await Shell.Current.DisplayAlert("Error", "El correo electrónico ya está en uso", "OK");
+                    return;
+                }
+
+                User user = await loginService.Register(Email, Password);
                 if (user != null)
                 {
                     if (Preferences.ContainsKey(nameof(App.user)))
@@ -36,11 +42,11 @@ public partial class LoginPageViewModel : ObservableObject
                     Preferences.Set(nameof(App.user), userDetails);
                     App.user = user;
                     Shell.Current.FlyoutHeader = new FlyoutHeaderControl();
-                    await Shell.Current.GoToAsync(nameof(HomePage));
+                    await Shell.Current.GoToAsync("//LoginPage");
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlert("Error", "El Correo y/o contraseñas incorrectos", "OK");
+                    await Shell.Current.DisplayAlert("Error", "El registro no fue exitoso", "OK");
                     return;
                 }
             }
@@ -48,7 +54,7 @@ public partial class LoginPageViewModel : ObservableObject
             {
                 await Shell.Current.DisplayAlert("Error", "Todos los campos son requeridos", "OK");
                 return;
-            }    
+            }
         }
         catch (Exception ex)
         {
@@ -58,16 +64,15 @@ public partial class LoginPageViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public async void GoToRegisterPage()
+    public async void GoToLoginPage()
     {
         try
         {
-            await Shell.Current.GoToAsync("//register");
+            await Shell.Current.GoToAsync("//LoginPage");
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
         }
     }
-
 }
