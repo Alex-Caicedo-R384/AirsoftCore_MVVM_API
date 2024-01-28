@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AirsoftMVVM.ViewModels"
+             x:DataType="viewmodels:LoginPageViewModel"
+             x:Class="AirsoftMVVM.Views.LoginPage"
+             Title="LoginPage"
+             BackgroundColor="#bebebe">
+
+    <VerticalStackLayout>
+        <Frame CornerRadius="50" WidthRequest="100" HeightRequest="100"  Margin="0,20,0,0" Padding="0" BorderColor="#800020" BackgroundColor="#5e5e5e">
+            <Image Source="usuariologo.jpg" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"></Image>
+        </Frame>
+
+        <StackLayout Orientation="Vertical" Spacing="10" Margin="0,25,0,0">
+            <Label Text="Bienvenidos" FontAttributes="Bold" FontSize="Large" TextColor="#b26679" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
+            <Label Text="Inicia Sesión Para Continuar" TextColor="#b26679" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+        </StackLayout>
+
+        <Grid RowDefinitions="*, *, *" Margin="0,60,0,0" Padding="10" RowSpacing="10" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="usuario.jpg" WidthRequest="30" HeightRequest="30"></Image>
+                <Entry Text="{Binding Email}" HeightRequest="50" WidthRequest="300" Margin="10,0,0,0" Placeholder="Correo" FontAttributes="Bold"></Entry>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                <Image Source="candado.jpg" WidthRequest="30" HeightRequest="30"></Image>
+                <Entry Text="{Binding Password}" HeightRequest="50" WidthRequest="300" Margin="10,0,0,0" Placeholder="Contraseña" FontAttributes="Bold" IsPassword="True"></Entry>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Margin="35,0,0,0" Orientation="Horizontal">
+                <CheckBox IsChecked="False"></CheckBox>
+                <Label Text="Recordarme" FontAttributes="Bold" Margin="-10,13,0,0"></Label>
+                <Button Text="Olvide Mi contraseña" BackgroundColor="Transparent" TextColor="#b26679" FontAttributes="Bold" BorderWidth="0" Margin="50,0,0,0"></Button>
+            </StackLayout>
+
+        </Grid>
+
+        <Button Command="{Binding SignInCommand}" FontAttributes="Bold" Text="Iniciar Sesión" TextColor="#fff" BackgroundColor="#800020" CornerRadius="10" FontSize="20" VerticalOptions="Center" Margin="475,0,475,0"></Button>
+
+        <StackLayout Margin="0,35,0,0" Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Eres Nuevo?" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#800020" FontSize="Small"></Label>
+            <Button Text="Registrate!" FontSize="Small" TextColor="#590016" BorderWidth="0" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"  BackgroundColor="Transparent"></Button>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
