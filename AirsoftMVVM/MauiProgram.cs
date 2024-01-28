@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AirsoftMVVM.ViewModels;
+using AirsoftMVVM.Views;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace AirsoftMVVM
 {
@@ -14,7 +17,11 @@ namespace AirsoftMVVM
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<AboutPage>();
+            builder.Services.AddSingleton<ContactPage>();
+            builder.Services.AddSingleton<LoginPageViewModel>();
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

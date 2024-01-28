@@ -4,11 +4,27 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AirsoftMVVM.Views"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:AirsoftMVVM.Views"
+    xmlns:viewmodel="clr-namespace:AirsoftMVVM.ViewModels"
+    x:DataType="viewmodel:AppShellViewModel"
+    Shell.TabBarIsVisible="False">
 
     <ShellContent
-        Title="Home"
+        Title="Inicio de Sesión"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
+        Route="LoginPage"
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"/>
 
+    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Inicio" Icon="casa.jpg"  ContentTemplate="{DataTemplate views:HomePage }"></ShellContent>
+        <ShellContent Title="Contactanos" Icon="contacto.jpg"  ContentTemplate="{DataTemplate views:ContactPage }"></ShellContent>
+        <ShellContent Title="Acerca de Nosotros" Icon="acerca.jpg"  ContentTemplate="{DataTemplate views:AboutPage }"></ShellContent>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Command="{Binding LogoutCommand}" BackgroundColor="IndianRed" Text="Cerrar Sesión" TextColor="White" FontAttributes="Bold" FontSize="18"></Button>
+        </StackLayout>
+    </Shell.FlyoutFooter>
 </Shell>

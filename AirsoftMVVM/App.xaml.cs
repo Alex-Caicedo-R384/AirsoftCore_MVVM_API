@@ -1,12 +1,14 @@
-﻿namespace AirsoftMVVM
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿using AirsoftMVVM.Models;
 
-            MainPage = new AppShell();
-        }
+namespace AirsoftMVVM;
+
+public partial class App : Application
+{
+    public static User user;
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
     }
 }

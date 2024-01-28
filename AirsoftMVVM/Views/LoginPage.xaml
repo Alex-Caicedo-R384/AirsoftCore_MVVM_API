@@ -4,7 +4,7 @@
              xmlns:viewmodels="clr-namespace:AirsoftMVVM.ViewModels"
              x:DataType="viewmodels:LoginPageViewModel"
              x:Class="AirsoftMVVM.Views.LoginPage"
-             Title="LoginPage"
+             Title="Inicia Sesión"
              BackgroundColor="#bebebe">
 
     <VerticalStackLayout>
