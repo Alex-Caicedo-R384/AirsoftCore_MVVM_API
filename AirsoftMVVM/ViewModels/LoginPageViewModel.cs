@@ -57,17 +57,4 @@ public partial class LoginPageViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
-    public async void GoToRegisterPage()
-    {
-        try
-        {
-            await Shell.Current.GoToAsync("//register");
-        }
-        catch (Exception ex)
-        {
-            await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
-        }
-    }
-
 }

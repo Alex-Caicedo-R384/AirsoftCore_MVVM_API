@@ -16,8 +16,6 @@
         FlyoutItemIsVisible="False"
         Shell.FlyoutBehavior="Disabled"/>
 
-    <ShellContent Route="register" Title="Registrarse" Icon="registrar.jpg " ContentTemplate="{DataTemplate views:RegisterPage}"></ShellContent>
-
     <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Inicio" Icon="casa.jpg"  ContentTemplate="{DataTemplate views:HomePage }"></ShellContent>
         <ShellContent Title="Contactanos" Icon="contacto.jpg"  ContentTemplate="{DataTemplate views:ContactPage }"></ShellContent>

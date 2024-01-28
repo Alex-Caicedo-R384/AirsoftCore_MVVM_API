@@ -53,7 +53,6 @@
 	  <None Remove="Resources\Images\candado.jpg" />
 	  <None Remove="Resources\Images\casa.jpg" />
 	  <None Remove="Resources\Images\contacto.jpg" />
-	  <None Remove="Resources\Images\registrar.jpg" />
 	  <None Remove="Resources\Images\usuario.jpg" />
 	  <None Remove="Resources\Images\usuariologo.jpg" />
 	</ItemGroup>

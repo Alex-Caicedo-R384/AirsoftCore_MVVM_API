@@ -12,6 +12,6 @@ public partial class AppShellViewModel : ObservableObject
         {
             Preferences.Remove(nameof(App.user));
         }
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("Inicio de Sesión");
     }
 }
